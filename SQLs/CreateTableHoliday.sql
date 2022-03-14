@@ -2,7 +2,6 @@ USE [PracticalDatabase]
 GO
 
 CREATE TABLE Holiday(
-    Country NVARCHAR(50) NOT NULL,
     [Date] DATE NOT NULL,
     [Description] NVARCHAR(100) NULL
 

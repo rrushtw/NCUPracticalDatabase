@@ -1,5 +1,5 @@
 USE [PracticalDatabase]
 GO
 
-DROP TABLE CompanyInfo;
+DROP TABLE Company;
 GO

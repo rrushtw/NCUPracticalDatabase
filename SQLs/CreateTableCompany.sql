@@ -1,7 +1,7 @@
 USE [PracticalDatabase]
 GO
 
-CREATE TABLE CompanyInfo(
+CREATE TABLE Company(
     CompanyId NVARCHAR(4) NOT NULL,
     CompanyName NVARCHAR(50) NOT NULL,
     IndustryType NVARCHAR(100) NOT NULL,
@@ -20,7 +20,7 @@ EXEC sys.sp_addextendedproperty
 @level0type=N'SCHEMA',
 @level0name=N'dbo',
 @level1type=N'TABLE',
-@level1name=N'CompanyInfo',
+@level1name=N'Company',
 @level2type=N'COLUMN',
 @level2name=N'CompanyId'
 GO
@@ -31,7 +31,7 @@ EXEC sys.sp_addextendedproperty
 @level0type=N'SCHEMA',
 @level0name=N'dbo',
 @level1type=N'TABLE',
-@level1name=N'CompanyInfo',
+@level1name=N'Company',
 @level2type=N'COLUMN',
 @level2name=N'CompanyName'
 GO
@@ -42,7 +42,7 @@ EXEC sys.sp_addextendedproperty
 @level0type=N'SCHEMA',
 @level0name=N'dbo',
 @level1type=N'TABLE',
-@level1name=N'CompanyInfo',
+@level1name=N'Company',
 @level2type=N'COLUMN',
 @level2name=N'IndustryType'
 GO
@@ -53,7 +53,7 @@ EXEC sys.sp_addextendedproperty
 @level0type=N'SCHEMA',
 @level0name=N'dbo',
 @level1type=N'TABLE',
-@level1name=N'CompanyInfo',
+@level1name=N'Company',
 @level2type=N'COLUMN',
 @level2name=N'Remark'
 GO
@@ -64,5 +64,5 @@ EXEC sys.sp_addextendedproperty
 @level0type=N'SCHEMA',
 @level0name=N'dbo',
 @level1type=N'TABLE',
-@level1name=N'CompanyInfo'
+@level1name=N'Company'
 GO
