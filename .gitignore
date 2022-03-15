@@ -1,2 +1,5 @@
 # Folder
 __pycache__/
+
+# File
+*.exe
