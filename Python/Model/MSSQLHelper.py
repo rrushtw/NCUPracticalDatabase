@@ -61,11 +61,9 @@ class MSSQLHelper:
             cursor.execute(SQLCommand)
 
             # load data to result
-            row = cursor.fetchone()
-            while row:
+            for row in cursor:
                 result.append(row)
-                row = cursor.fetchone()
-                #end loop
+            #end loop
 
             connection.commit()  #end execute
             connection.close()  #end connection
@@ -89,16 +87,17 @@ class MSSQLHelper:
             # Execute command and store result in cursor
             cursor.execute(SQLCommand)
 
-            rowcount = cursor.rowcount
+            rowCount = cursor.rowcount
 
             connection.commit()  #end execute
             connection.close()  #end connection
             #end try
         except Exception as ex:
-            print("Exception happened.")
-            print(ex.args[0])
+            print("Exception happened:")
+            print(ex)
+            print("End Exception")
             #end exception
 
-        return rowcount
+        return rowCount
         #end def
     #end class

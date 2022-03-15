@@ -4,8 +4,7 @@ import json
 
 # from FolderName.FileName import ClassName
 from bs4 import BeautifulSoup
-from DataAccessLayer.Holiday_DAL import Holiday_DAL
-from Model.HolidayModel import HolidayModel
+from DataAccessLayer.Holiday import Holiday as DAL
 from Model.JsonHelper import JsonHelper
 
 class Holiday:
@@ -39,41 +38,30 @@ class Holiday:
 
         for collection in json.loads(soup.text):
             if collection["countryCode"] == "TWSE":
-                holiday = HolidayModel()
+                holiday = JsonHelper()
                 holiday.Date = collection["date"]
                 holiday.Description = collection["content"]
 
-                result.append(holiday.__dict__)
+                result.append(holiday.toJSON())
                 pass
             else:
                 pass
-                #end if
-            #end loop
+            #end if
+        #end loop
 
         #print(json.dumps(result, ensure_ascii = False))
         return result
-        #end def
+    #end def
     
     def Insert(holidayList):
         if not isinstance(holidayList, list):
             raise Exception("Invalid input")
-            #end if
-            
-        return Holiday_DAL.Insert(holidayList)
-        #end def
+        #end if
+
+        return DAL.Insert(holidayList)
+    #end def
 
     def GetAll():
-        result = []
-        holidayList = Holiday_DAL.SelectAll()
-
-        for holiday in holidayList:
-            temp = JsonHelper()
-            temp.Date = holiday[0].strftime("%Y-%m-%d")
-            temp.Description = holiday[1]
-
-            result.append(json.loads(temp.toJSON()))
-            #end loop
-
-        return result
-        #end def
-    #end class
+        return DAL.SelectAll()
+    #end def
+#end class
