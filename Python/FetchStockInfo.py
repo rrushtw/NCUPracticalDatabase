@@ -4,8 +4,7 @@ from BusinessLogicLayer.StockInfo import StockInfo
 from Model.JsonHelper import JsonHelper
 
 class FetchStockInfo:
-    for i in range(3):
-        StockInfo.FetchAll(2022, i + 1)
-    #end loop
+    today = datetime.today()
+    StockInfo.FetchAll(today.year, today.month)
     print("End")
 #end class
