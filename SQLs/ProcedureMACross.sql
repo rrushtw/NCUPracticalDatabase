@@ -51,10 +51,10 @@ BEGIN
         BEGIN
             SELECT
                 @companyId AS CompanyId,
-                '多頭 轉盤整 或 轉多空 警示' AS [Message];
-        END;
+                N'多頭 轉盤整 或 轉多空 警示' AS [Message];
 
-        RETURN;
+            RETURN;
+        END;
     END;
 
     -- going down
@@ -64,17 +64,17 @@ BEGIN
         BEGIN
             SELECT
                 @companyId AS CompanyId,
-                '多空 轉盤整 或 轉多頭 警示' AS [Message];
-        END;
+                N'多空 轉盤整 或 轉多頭 警示' AS [Message];
 
-        RETURN;
+            RETURN;
+        END;
     END;
 
     IF (@currentClosePrice >= @currentMA05 AND @currentMA05 > @day2MA05)
     BEGIN
         SELECT
             @companyId AS CompanyId,
-            '盤整 轉多頭 警示' AS [Message];
+            N'盤整 轉多頭 警示' AS [Message];
         RETURN;
     END;
 
@@ -82,11 +82,11 @@ BEGIN
     BEGIN
         SELECT
             @companyId AS CompanyId,
-            '盤整 轉多空 警示' AS [Message];
+            N'盤整 轉多空 警示' AS [Message];
         RETURN;
     END;
 
     SELECT
         @companyId AS CompanyId,
-        '盤整' AS [Message];
+        N'盤整' AS [Message];
 END;
