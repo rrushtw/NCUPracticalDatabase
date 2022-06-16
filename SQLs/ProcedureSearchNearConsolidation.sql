@@ -15,15 +15,29 @@ BEGIN
     SELECT *
     FROM (
         -- Get the nearest price which is bigger than current
-        SELECT TOP 1 *
+        SELECT TOP 1
+            N'HIGH' AS HighOrLow,
+            CompanyId,
+            BeginDate,
+            EndDate,
+            AveragePrice
         FROM Consolidation WITH(NOLOCK)
-        WHERE AveragePrice >= @currentPrice
+        WHERE
+            CompanyId = @companyId
+            AND AveragePrice >= @currentPrice
         ORDER BY AveragePrice ASC
         UNION ALL
         -- Get the nearest price which is smaller than current
-        SELECT TOP 1 *
+        SELECT TOP 1
+             N'LOW' AS HighOrLow,
+            CompanyId,
+            BeginDate,
+            EndDate,
+            AveragePrice
         FROm Consolidation WITH(NOLOCK)
-        WHERE AveragePrice <= @currentPrice
+        WHERE
+            CompanyId = @companyId
+            AND AveragePrice <= @currentPrice
         ORDER BY AveragePrice DESC
     ) AS UnionTable
     ORDER BY AveragePrice ASC;
